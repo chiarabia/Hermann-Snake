@@ -16,21 +16,23 @@ end
 
 function update_game()
     --takes the imput movement for the snake
-    if btnp(➡️) then
+    if btnp(➡️) and cant_turn_back_x == false  then
         snake.dx= 1
         snake.dy= 0
-    elseif btnp(⬅️) then
+    elseif btnp(⬅️) and cant_turn_back_x == false then
         snake.dx= -1
         snake.dy= 0
-    elseif btnp(⬆️) then
+    elseif btnp(⬆️) and cant_turn_back_y == false then
         snake.dx= 0
         snake.dy= -1
-    elseif btnp(⬇️) then
+    elseif btnp(⬇️) and cant_turn_back_y == false then
         snake.dx= 0
         snake.dy= 1
     end 
 
-
+    if(score > highscore) then
+        highscore = score
+    end
     --ticks time and updates snake every frame
     ticks += 1
     if ticks >= snake_vel then
@@ -41,9 +43,13 @@ function update_game()
 end
 
 function update_gameover()
-      if(btnp(❎)) then
+    --y= 0
+    update_timer()
+    gameover_animation()
+
+    if(btnp(❎)) then
         init_menu()
-        end
+    end
 end
 
 function update_options()

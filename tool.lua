@@ -86,6 +86,18 @@ update_snake =function (self)
         snake.prev_x = last_x
         snake.prev_y = last_y
     end
+
+    if(self.body[1] != nil and self.body[1].x == snake.x) then
+        cant_turn_back_y = true
+    else
+        cant_turn_back_y = false
+    end
+
+    if(self.body[1] != nil and self.body[1].y == snake.y) then
+        cant_turn_back_x = true
+    else
+        cant_turn_back_x = false
+    end
          		
     apple_state = false
     --check if the apple is eaten   		
@@ -126,8 +138,23 @@ update_snake =function (self)
         for block in all(blocks) do
             snake:check_for_collision(block)
     end ]]
---end
+    --end
 
+end
+
+function gameover_animation()
+    circle.animation.elapsed += timer.elapsed
+    if (circle.animation.elapsed >= circle.animation.length) then
+        rectfill(0,y,128,1,0)
+        y = y+1
+        circle.animation.elapsed = 0
+    end
+    --return new_y
+end
+
+function update_timer()
+    timer.elapsed = (time() - timer.last)
+    timer.last = time()
 end
 
 --[[ function lines_overlapping(min1,max1,min2,max2)

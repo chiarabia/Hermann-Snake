@@ -1,7 +1,9 @@
 function _init()
 	--global variables
 		grid_size=2
-		snake_vel=2
+        snake_vel=2
+        score = 0
+        highscore= 0
 		difficulty = " normal"
         collide= "not gameover"
         collision = false
@@ -26,6 +28,9 @@ function init_menu()
 end
 
 function init_game()
+    cant_turn_back_y = false
+    cant_turn_back_x = false
+    score = 0
 	apples={}
 	add(apples,apple_spawn())
 	snake = {}
@@ -38,6 +43,11 @@ function init_game()
 end
 
 function init_gameover()
+    y = 0
+    ticks = 0
+    timer = { elapsed = 0, last = time() }
+    circle = {}
+    circle.animation = { length = -100, elapsed = 0}
 	_update = update_gameover
 	_draw= draw_gameover
 end
