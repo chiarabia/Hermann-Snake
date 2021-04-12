@@ -40,6 +40,12 @@ function update_game()
         ticks = 0
     end
 
+    if(collision == true) then 
+        for part in all(blocks) do
+            snake.check_for_collision(snake,part)
+        end 
+    end
+
 end
 
 function update_gameover()

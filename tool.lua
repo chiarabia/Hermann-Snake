@@ -26,8 +26,8 @@ function snake_spawn()
         dx = 1,
         dy = 0,
         draw = draw_snake,
-        update = update_snake
-        --check_for_collision = collision_snake
+        update = update_snake,
+        check_for_collision = collision_snake
     }
     return snake
 end
@@ -36,18 +36,18 @@ function block_spawn(pix_x,pix_y)
     block = {
         x = pix_x,
         y = pix_y,
-        --width = 8,
-        --height = 8,
+        width = 8,
+        height = 8,
         draw = draw_block
     }
     return block
 end
 
---[[ collision_snake = function(self,block)
+collision_snake = function(self,block)
     if (bounding_boxes_overlapping(self,block)) then
         init_gameover()
     end
-end ]]
+end 
 
 draw_apple = function(self)
     rectfill(self.x*grid_size,self.y* grid_size,(self.x+2)*grid_size-1,(self.y+2)*grid_size-1,color_apple)
@@ -133,13 +133,6 @@ update_snake =function (self)
         end
     end
 
-    --[[ if(collision == true) then 
-        local block
-        for block in all(blocks) do
-            snake:check_for_collision(block)
-    end ]]
-    --end
-
 end
 
 function gameover_animation()
@@ -149,7 +142,7 @@ function gameover_animation()
         y = y+1
         circle.animation.elapsed = 0
     end
-    --return new_y
+    
 end
 
 function update_timer()
@@ -157,7 +150,7 @@ function update_timer()
     timer.last = time()
 end
 
---[[ function lines_overlapping(min1,max1,min2,max2)
+function lines_overlapping(min1,max1,min2,max2)
     return max1>min2 and max2>min1
 end
 
@@ -168,4 +161,4 @@ end
 
 function bounding_boxes_overlapping(obj1,obj2)
     return rects_overlapping(obj1.x*grid_size,obj1.y*grid_size,(obj1.x*grid_size),(obj1.y*grid_size),obj2.x*grid_size,obj2.y*grid_size,(obj2.x*grid_size)+obj2.width,(obj2.y*grid_size)+obj2.height)
-end ]]
+end 

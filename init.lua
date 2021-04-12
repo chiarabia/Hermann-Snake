@@ -28,13 +28,38 @@ function init_menu()
 end
 
 function init_game()
+	if(grid_size == 1) then
+		pix_x_b = 5
+		pix_y_b = 15
+		base_y_b= 15
+		last_y_b = 9
+		max_x_b = 11
+		max_y_b = 10
+   end
+   if grid_size == 2 then
+		pix_x_b = 3
+		pix_y_b = 13
+		base_y_b= 13
+		last_y_b= 18
+		max_x_b = 5
+		max_y_b = 4
+   end
     cant_turn_back_y = false
     cant_turn_back_x = false
     score = 0
 	apples={}
 	add(apples,apple_spawn())
 	snake = {}
-    add(snake,snake_spawn())
+	add(snake,snake_spawn())
+	blocks = {}
+	for x=0,max_x_b do
+		for y=0,max_y_b do
+            add(blocks,block_spawn(pix_x_b,pix_y_b))
+            pix_y_b = pix_y_b + 10
+        end
+        pix_x_b = pix_x_b + 10
+        pix_y_b = base_y_b
+    end	
 	
 	ticks = 0
 
