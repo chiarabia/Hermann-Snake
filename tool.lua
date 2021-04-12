@@ -44,7 +44,9 @@ function block_spawn(pix_x,pix_y)
 end
 
 collision_snake = function(self,block)
-    if (bounding_boxes_overlapping(self,block)) then
+    if ((snake.x >= block.x and snake.x <= (block.x + block.width -1)) and (snake.y == block.y or snake.y == (block.y + block.width -1))) or (
+        (snake.y >= block.y and snake.y <= (block.y + block.width-1)) and (snake.x == block.x or snake.x == (block.x + block.width -1))
+    ) then
         init_gameover()
     end
 end 
@@ -53,7 +55,7 @@ draw_apple = function(self)
     rectfill(self.x*grid_size,self.y* grid_size,(self.x+2)*grid_size-1,(self.y+2)*grid_size-1,color_apple)
 end
 draw_block = function(self)
-    spr(1,self.x*grid_size,self.y*grid_size,grid_size,grid_size)
+    spr(sprite_blocks,self.x*grid_size,self.y*grid_size,grid_size,grid_size)
     --rect(self.x*grid_size,self.y*grid_size,(self.x*grid_size)+self.width,(self.y*grid_size)+self.height,0)
 end
 
@@ -138,7 +140,7 @@ end
 function gameover_animation()
     circle.animation.elapsed += timer.elapsed
     if (circle.animation.elapsed >= circle.animation.length) then
-        rectfill(0,y,128,1,0)
+        rectfill(0,y,128,1,small_color)
         y = y+1
         circle.animation.elapsed = 0
     end
@@ -149,7 +151,7 @@ function update_timer()
     timer.elapsed = (time() - timer.last)
     timer.last = time()
 end
-
+--[[ 
 function lines_overlapping(min1,max1,min2,max2)
     return max1>min2 and max2>min1
 end
@@ -161,4 +163,4 @@ end
 
 function bounding_boxes_overlapping(obj1,obj2)
     return rects_overlapping(obj1.x*grid_size,obj1.y*grid_size,(obj1.x*grid_size),(obj1.y*grid_size),obj2.x*grid_size,obj2.y*grid_size,(obj2.x*grid_size)+obj2.width,(obj2.y*grid_size)+obj2.height)
-end 
+end  ]]

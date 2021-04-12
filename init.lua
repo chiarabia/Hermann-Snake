@@ -3,10 +3,14 @@ function _init()
 		grid_size=2
         snake_vel=2
         score = 0
-        highscore= 0
+		highscore= 0
 		difficulty = " normal"
-        collide= "not gameover"
-        collision = false
+		collide= "not gameover"
+		colors_option = "normal"
+		collision = false
+		main_color = 7
+		small_color = 0
+		sprite_blocks = 1
 		color_apple_string = " gray"
         color_apple = 5
         palt(0,false)
@@ -82,10 +86,11 @@ function init_options()
     color_difficulty = 7
     color_gameover = 7
     color_menu = 7
-    color_apple_options = 7
-	y = 18
+	color_apple_options = 7
+	color_options_string = 7
+	y = 20
 	i = 1
-	positions = {18,48,78,108}
+	positions = {20,45,70,95,110}
 	_update = update_options
 	_draw = draw_options
 end

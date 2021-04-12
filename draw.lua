@@ -7,21 +7,21 @@ function draw_menu()
 end
 
 function draw_game()
-    cls(7)
+    cls(main_color)
     --draws la parte in alto
-    rectfill(0,0,127,10*grid_size,0)
+    rectfill(0,0,127,10*grid_size,small_color)
     
     --setta i dettagli per i blocchi    
-    rectfill(1,1,125,1,7)
-    rectfill(1,1,1,last_y_b,7)
-    rectfill(125,1,125,last_y_b,7)
-    rectfill(1,last_y_b,11,last_y_b,7)
-    rectfill(13,last_y_b,13,last_y_b,7)
-    rectfill(15,last_y_b,125,last_y_b,7)
+    rectfill(1,1,125,1,main_color)
+    rectfill(1,1,1,last_y_b,main_color)
+    rectfill(125,1,125,last_y_b,main_color)
+    rectfill(1,last_y_b,11,last_y_b,main_color)
+    rectfill(13,last_y_b,13,last_y_b,main_color)
+    rectfill(15,last_y_b,125,last_y_b,main_color)
 
-    print("score:",5,(last_y_b/2)-1,7)
+    print("score:",5,(last_y_b/2)-1,main_color)
     score = #snake.body * 100
-    print(score,30,(last_y_b/2)-1,7)
+    print(score,30,(last_y_b/2)-1,main_color)
 
     for part in all(blocks) do 
         block.draw(part)
@@ -34,14 +34,14 @@ end
 
 
 function draw_gameover()
-    print("highscore: ",35,35,7)
-    print(highscore,79,35,7)
-    print("gameover",44, 59,7)
-    print("score: ",44,69,7)
-    print(score,70,69,7)
-    print("difficulty: ",25,76,7)
-    print(difficulty,70,76,7)
-    print("press X for main menu",20, 110,7)
+    print("highscore: ",35,35,main_color)
+    print(highscore,79,35,main_color)
+    print("gameover",44, 59,main_color)
+    print("score: ",44,69,main_color)
+    print(score,70,69,main_color)
+    print("difficulty: ",25,76,main_color)
+    print(difficulty,70,76,main_color)
+    print("press X for main menu",20, 110,main_color)
 end
 
 function draw_options()
@@ -52,15 +52,20 @@ function draw_options()
 	print("difficulty: ",38,10,7)
 	print(difficulty, 44,20,color_difficulty)
 
-    spr(sprite,25,49,1,1,true)
-    spr(sprite,87,49)
-	print("collide with boxes: ",25,40,7)
-	print(collide,37,50,color_gameover)
+    spr(sprite,25,44,1,1,true)
+    spr(sprite,87,44)
+	print("collide with boxes: ",25,35,7)
+    print(collide,37,45,color_gameover)
     
-    spr(sprite,40,79,1,1,true)
-    spr(sprite,70,79)
-	print("apple color:",35,70,7)
-	print(color_apple_string,45,80,color_apple_options)
+    spr(sprite,33,69,1,1,true)
+    spr(sprite,77,69)
+    print("colors: ",45,60,7)
+    print(colors_option,43,70,color_options_string)
+    
+    spr(sprite,35,94,1,1,true)
+    spr(sprite,70,94)
+	print("apple color:",35,85,7)
+	print(color_apple_string,45,95,color_apple_options)
 
 	
 	print("main menu",40, 110,color_menu)
