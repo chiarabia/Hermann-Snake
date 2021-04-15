@@ -4,6 +4,8 @@ function _init()
         snake_vel=2
         score = 0
 		highscore= 0
+		highscore_normal = 0
+		highscore_harcore = 0
 		difficulty = " normal"
 		collide= "not gameover"
 		colors_option = "normal"

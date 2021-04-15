@@ -52,6 +52,11 @@ function update_gameover()
     --y= 0
     update_timer()
     gameover_animation()
+    if (grid_size == 2) then
+        highscore_hardcore = highscore
+    else 
+        highscore_normal = highscore
+    end
 
     if(btnp(❎)) then
         init_menu()
@@ -74,11 +79,13 @@ function update_options()
         color_gameover = 7
         if btnp(➡️) then
             difficulty="hardcore"
+            highscore = highscore_normal
             grid_size = 1
             snake_vel = 1	
         end
         if btnp(⬅️) then
             difficulty ="normal"
+            highscore = highscore_hardcore
             grid_size = 2
             snake_vel= 2
         end
