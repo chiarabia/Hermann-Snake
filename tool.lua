@@ -120,18 +120,21 @@ update_snake =function (self)
     -- if snake goes out of the screen 
     if(snake.x == 0 or snake.x == 127 or snake.y == 9 or snake.y == 127) then
         init_gameover()
+        sfx(00)
     end
            
     if(grid_size == 2) then
         if(snake.x == 65 or snake.y == 65) then
             init_gameover()
+            sfx(00)
         end  
     end
     
     --if snake eats itself
     for part in all(self.body) do
         if(snake.x == part.x and snake.y == part.y) then
-           	init_gameover()
+               init_gameover()
+               sfx(00)
         end
     end
 

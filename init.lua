@@ -27,6 +27,7 @@ function _init()
 end
 
 function init_menu()
+	music(00)
 	sprite = 7
 	y = 78
 	_update = update_menu
@@ -34,6 +35,7 @@ function init_menu()
 end
 
 function init_game()
+	music(-1, 200)
 	if(grid_size == 1) then
 		pix_x_b = 5
 		pix_y_b = 15
